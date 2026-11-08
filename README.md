@@ -66,7 +66,7 @@
 #### 部署步驟
 ```bash
 # 1. 複製專案
-git clone https://github.com/your-username/lolinet.git
+git clone https://github.com/M24VC/lolinet.git
 cd lolinet
 
 # 2. 安裝相依套件
@@ -134,7 +134,7 @@ npx wrangler deploy
 
 ```bash
 # 1. 下載專案並啟動
-git clone https://github.com/your-username/lolinet.git
+git clone https://github.com/M24VC/lolinet.git
 cd lolinet
 docker compose up -d
 
