@@ -1,0 +1,17 @@
+node_modules/
+.git/
+.env
+.env.*
+server/
+tools/
+data/
+*.log
+*.sh
+package*.json
+wrangler.json
+Dockerfile
+docker-compose.yml
+LICENSE
+README.md
+schema.sql
+functions/

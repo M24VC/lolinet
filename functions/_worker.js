@@ -96,38 +96,12 @@ function sanitizeUrl(str, defaultUrl = '') {
 }
 
 // Ensure D1 database schema
-async function initD1(db) {
-  if (!db) return;
-  try {
-    await db.exec(`
-      CREATE TABLE IF NOT EXISTS app_state (
-        id INTEGER PRIMARY KEY CHECK (id = 1),
-        settings_json TEXT NOT NULL,
-        links_json TEXT NOT NULL,
-        plugin_state_json TEXT NOT NULL
-      );
-      CREATE TABLE IF NOT EXISTS admin_users (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        username TEXT UNIQUE NOT NULL,
-        password_hash TEXT NOT NULL,
-        tfa_enabled INTEGER NOT NULL DEFAULT 0,
-        tfa_secret TEXT NOT NULL DEFAULT ''
-      );
-    `);
-    const row = await db.prepare('SELECT id FROM app_state WHERE id = 1').first();
-    if (!row) {
-      await db.prepare('INSERT INTO app_state (id, settings_json, links_json, plugin_state_json) VALUES (1, ?, ?, ?)')
-        .bind(JSON.stringify(DEF_SET), JSON.stringify(DEF_LINKS), JSON.stringify({})).run();
-    }
-  } catch (err) {
-    console.error('[D1 init error]', err);
-  }
-}
+// D1 tables initialized via schema.sql
 
 async function getStateFromEnv(env) {
   if (env.DB) {
     try {
-      await initD1(env.DB);
+      
       const row = await env.DB.prepare('SELECT settings_json, links_json, plugin_state_json FROM app_state WHERE id = 1').first();
       if (row) {
         return {
@@ -150,7 +124,7 @@ async function saveStateToEnv(env, nextState) {
 
   if (env.DB) {
     try {
-      await initD1(env.DB);
+      
       if (nextState.settings) {
         await env.DB.prepare('UPDATE app_state SET settings_json = ? WHERE id = 1')
           .bind(JSON.stringify(memoryState.settings)).run();
@@ -353,7 +327,7 @@ export default {
     // SSR Homepage Handling
     if (pathname === '/' || pathname === '/index.html') {
       try {
-        const assetRes = await env.ASSETS.fetch(new Request(new URL('/index.html', request.url), request));
+        const assetRes = await env.ASSETS.fetch(new URL('/index.html', request.url));
         if (assetRes.ok) {
           const rawHtml = await assetRes.text();
           const { settings, links } = await getStateFromEnv(env);
@@ -475,7 +449,7 @@ export default {
 
         if (env.DB) {
           try {
-            await initD1(env.DB);
+            
             const user = await env.DB.prepare('SELECT * FROM admin_users WHERE username = ?').bind(username).first();
             if (user) {
               isValid = await bcrypt.compare(password, user.password_hash);
