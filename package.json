@@ -1,0 +1,23 @@
+{
+  "name": "lolinet-fullstack",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node server/index.js",
+    "start": "node server/index.js",
+    "reset-admin": "node server/reset-admin.js",
+    "test": "node tools/run_tests.js",
+    "deploy:workers": "wrangler deploy",
+    "deploy:pages": "wrangler pages deploy . --project-name=lolinet"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "better-sqlite3": "^12.10.0",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
+    "dotenv": "^16.6.1",
+    "express": "^4.21.2",
+    "otplib": "^12.0.1"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "lolinet",
+  "main": "functions/_worker.js",
+  "compatibility_date": "2026-11-01",
+  "compatibility_flags": ["nodejs_compat"],
+  "assets": {
+    "directory": "."
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "lolinet-db",
+      "database_id": "YOUR_D1_DATABASE_ID_OPTIONAL"
+    }
+  ]
+}

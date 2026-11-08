@@ -1,0 +1,17 @@
+services:
+  lolinet:
+    build: .
+    container_name: lolinet
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      - PORT=3000
+      - DB_PATH=/app/data/lolinet.db
+      - SESSION_SECRET=change-me-to-a-secure-random-secret
+      - ADMIN_USERNAME=admin
+      - ADMIN_INIT_PASSWORD=admin123
+    volumes:
+      # Persistent storage for SQLite database and uploaded media
+      - ./data:/app/data
+      - ./assets/uploads:/app/assets/uploads

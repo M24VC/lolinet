@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="description" content="LoliNet - 賽博龐克風格個人導覽站，收錄開發工具、博客、媒體等精選站點。快速訪問你最愛的網站，支持分類篩選與即時搜尋。">
+<meta name="keywords" content="個人導覽站, 書籤, 導航, 賽博龐克, 網站收藏, 工具箱, 二次元, 技術博客">
+<meta name="author" content="LoliNet">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#070712">
+<meta name="color-scheme" content="dark">
+
+<!-- Open Graph -->
+<meta property="og:title" content="LoliNet // 個人導覽站">
+<meta property="og:description" content="賽博龐克風格個人導覽站，收錄開發工具、博客、媒體等精選站點。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://m24vc.com/">
+<meta property="og:site_name" content="LoliNet">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://api.dicebear.com/7.x/pixel-art/svg?seed=kawaii&backgroundColor=b6e3f4,d1d4f9,ffd5dc">
+<meta property="og:image:width" content="512">
+<meta property="og:image:height" content="512">
+<meta property="og:image:alt" content="LoliNet 像素風格頭像">
+
+<!-- Twitter Cards -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="LoliNet // 個人導覽站">
+<meta name="twitter:description" content="賽博龐克風格個人導覽站，收錄開發工具、博客、媒體等精選站點。">
+<meta name="twitter:image" content="https://api.dicebear.com/7.x/pixel-art/svg?seed=kawaii&backgroundColor=b6e3f4,d1d4f9,ffd5dc">
+
+<!-- Canonical -->
+<link rel="canonical" href="https://m24vc.com/">
+
+<!-- Favicon -->
+<link rel="icon" type="image/svg+xml" href="https://api.dicebear.com/7.x/pixel-art/svg?seed=kawaii&backgroundColor=b6e3f4,d1d4f9,ffd5dc">
+<link rel="apple-touch-icon" href="https://api.dicebear.com/7.x/pixel-art/svg?seed=kawaii&backgroundColor=b6e3f4,d1d4f9,ffd5dc">
+
+<!-- Preconnect -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="dns-prefetch" href="https://api.dicebear.com">
+
+<!-- JSON-LD Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "LoliNet",
+  "alternateName": "LoliNet 個人導覽站",
+  "url": "https://m24vc.com/",
+  "description": "賽博龐克風格個人導覽站，收錄開發工具、博客、媒體等精選站點。",
+  "image": "https://api.dicebear.com/7.x/pixel-art/svg?seed=kawaii&backgroundColor=b6e3f4,d1d4f9,ffd5dc",
+  "author": {
+    "@type": "Person",
+    "name": "LoliNet"
+  },
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": "https://m24vc.com/?q={search_term_string}"
+    },
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+
+<title>LoliNet // 個人導覽站</title>
+<script>
+(function(){
+  try {
+    const raw = localStorage.getItem('lnset');
+    if (!raw) return;
+    const parsed = JSON.parse(raw);
+    const favicon = parsed && parsed.seo && parsed.seo.favicon;
+    if (!favicon) return;
+
+    let icon = document.querySelector('link[rel="icon"]');
+    if (!icon) {
+      icon = document.createElement('link');
+      icon.setAttribute('rel', 'icon');
+      document.head.appendChild(icon);
+    }
+    icon.setAttribute('href', favicon);
+
+    let apple = document.querySelector('link[rel="apple-touch-icon"]');
+    if (!apple) {
+      apple = document.createElement('link');
+      apple.setAttribute('rel', 'apple-touch-icon');
+      document.head.appendChild(apple);
+    }
+    apple.setAttribute('href', favicon);
+  } catch (_) {}
+})();
+</script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;700;900&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#070712;--bg2:#0d0d1a;
+  --pink:#ff6eb4;--green:#00ff88;--cyan:#00d4ff;--purple:#b44fff;
+  --text:#c8d8ff;--dim:#5060a0;--card:#0d0d1ade;
+  --b-pink:rgba(255,110,180,.35);--b-green:rgba(0,255,136,.35);
+  --g-pink:0 0 12px rgba(255,110,180,.7);
+  --g-green:0 0 12px rgba(0,255,136,.7);
+  --g-cyan:0 0 12px rgba(0,212,255,.7);
+}
+body{background:var(--bg);color:var(--text);font-family:'Share Tech Mono',monospace;min-height:100vh;overflow-x:hidden}
+#mc{position:fixed;inset:0;z-index:0;opacity:.13;pointer-events:none}
+.scanlines{position:fixed;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,.04) 2px,rgba(0,0,0,.04) 4px);pointer-events:none;z-index:9990}
+#particles{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+.ptc{position:absolute;border-radius:50%;animation:floatUp linear infinite}
+@keyframes floatUp{0%{transform:translateY(100vh) scale(0);opacity:0}10%{opacity:1}90%{opacity:.8}100%{transform:translateY(-20px) scale(1);opacity:0}}
+.wrap{position:relative;z-index:1;min-height:100vh;padding:20px 15px 60px}
+@keyframes headerSlideDown {
+  0% { opacity: 0; transform: translateY(-20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+.hdr{text-align:center;padding:35px 10px 10px;animation:headerSlideDown 0.6s cubic-bezier(0.16, 1, 0.3, 1) both}
+.avatar-wrap{position:relative;display:inline-block;margin-bottom:18px}
+.ava{width:96px;height:96px;border-radius:50%;border:3px solid var(--pink);box-shadow:var(--g-pink);object-fit:cover;display:block;margin:0 auto;background:#1a0a20}
+.ring1{position:absolute;inset:-9px;border-radius:50%;border:1.5px solid var(--cyan);animation:spin 8s linear infinite}
+.ring1::after{content:'';position:absolute;top:-4px;left:50%;transform:translateX(-50%);width:8px;height:8px;background:var(--cyan);border-radius:50%;box-shadow:var(--g-cyan)}
+.ring2{position:absolute;inset:-17px;border-radius:50%;border:1px dashed rgba(255,110,180,.3);animation:spin 18s linear infinite reverse}
+@keyframes spin{to{transform:rotate(360deg)}}
+.site-title{font-family:'Orbitron',sans-serif;font-size:clamp(1.6em,5vw,2.6em);font-weight:900;color:var(--pink);text-shadow:var(--g-pink);letter-spacing:4px;position:relative;display:inline-block}
+.site-title::before,.site-title::after{content:attr(data-t);position:absolute;inset:0;pointer-events:none}
+.site-title::before{color:var(--cyan);animation:gl1 6s infinite;clip-path:polygon(0 0,100% 0,100% 35%,0 35%)}
+.site-title::after{color:var(--green);animation:gl2 6s infinite;clip-path:polygon(0 65%,100% 65%,100% 100%,0 100%)}
+@keyframes gl1{0%,88%,100%{transform:translate(0);opacity:0}89%{transform:translate(4px,0);opacity:.8}91%{transform:translate(0);opacity:0}}
+@keyframes gl2{0%,88%,100%{transform:translate(0);opacity:0}90%{transform:translate(-4px,0);opacity:.8}92%{transform:translate(0);opacity:0}}
+.subtitle{color:var(--cyan);font-size:.78em;letter-spacing:3px;margin-top:6px;text-shadow:var(--g-cyan)}
+.t-sep{display:flex;align-items:center;justify-content:center;gap:12px;color:var(--green);font-size:.72em;margin:12px auto;max-width:500px}
+.t-sep::before,.t-sep::after{content:'';flex:1;height:1px}
+.t-sep::before{background:linear-gradient(90deg,transparent,var(--green))}
+.t-sep::after{background:linear-gradient(270deg,transparent,var(--green))}
+.statusbar{display:flex;justify-content:center;gap:22px;flex-wrap:wrap;font-size:.72em;color:var(--dim);margin:8px 0 18px}
+.s-item{display:flex;align-items:center;gap:5px}
+.dot{width:6px;height:6px;border-radius:50%;background:var(--green);box-shadow:var(--g-green);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.25}}
+.srch-wrap{max-width:420px;margin:0 auto 18px;position:relative}
+.srch{width:100%;background:rgba(0,0,0,.5);border:1px solid var(--b-green);color:var(--text);padding:9px 14px 9px 38px;border-radius:25px;font-family:'Share Tech Mono',monospace;font-size:.85em;outline:none;transition:.3s}
+.srch:focus{border-color:var(--pink);box-shadow:var(--g-pink)}
+.srch-ico{position:absolute;left:13px;top:50%;transform:translateY(-50%);color:var(--dim);pointer-events:none}
+.cats{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-bottom:22px}
+.cat-btn{background:transparent;border:1px solid var(--b-pink);color:var(--dim);padding:5px 16px;border-radius:20px;cursor:pointer;font-family:'Share Tech Mono',monospace;font-size:.76em;transition:.3s;letter-spacing:1px}
+.cat-btn:hover,.cat-btn.on{border-color:var(--pink);color:var(--pink);box-shadow:var(--g-pink);background:rgba(255,110,180,.07)}
+@keyframes deckSlideIn {
+  0% { opacity: 0; transform: translateY(-12px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+.control-deck{max-width:1200px;margin:0 auto 16px;padding:9px 12px;border-top:1px solid var(--b-green);border-bottom:1px solid var(--b-pink);display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;background:rgba(7,7,18,.5);animation:deckSlideIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.08s both}
+.control-readout{display:flex;align-items:center;gap:9px;color:var(--dim);font-size:.72em;letter-spacing:1px}.control-readout b{color:var(--cyan);font-weight:400}.control-readout .pulse-bar{width:28px;height:3px;background:var(--green);box-shadow:var(--g-green);animation:signal 1.6s ease-in-out infinite}@keyframes signal{50%{transform:scaleX(.25);transform-origin:left;opacity:.4}}
+.control-actions{display:flex;gap:7px}.cmd{min-width:32px;height:30px;padding:0 9px;background:transparent;border:1px solid var(--b-green);color:var(--green);cursor:pointer;font:inherit;font-size:.78em;transition:.2s}.cmd:hover,.cmd[aria-pressed="true"]{border-color:var(--pink);color:var(--pink);box-shadow:var(--g-pink);background:rgba(255,110,180,.08)}
+.focus-mode .hdr{padding-bottom:4px}.focus-mode .statusbar,.focus-mode .t-sep,.focus-mode .control-deck{display:none}.focus-mode .wrap{padding-top:8px}.focus-mode .grid{max-width:1360px}.focus-mode .card{padding:19px 21px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:14px;max-width:1200px;margin:0 auto;padding:5px}
+@keyframes cardSlideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(26px) scale(0.96);
+  }
+  60% {
+    opacity: 0.9;
+    transform: translateY(-2px) scale(1.005);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+.card {
+  background: var(--card);
+  border: 1px solid var(--b-pink);
+  border-radius: 10px;
+  padding: 16px 18px;
+  cursor: pointer;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, border-color 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  text-decoration: none;
+  display: block;
+  animation: cardSlideUp 0.45s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+/* Laser shine beam sweeping across card on hover */
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 80%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 110, 180, 0.12), rgba(0, 212, 255, 0.18), transparent);
+  transform: skewX(-25deg);
+  transition: transform 0.75s ease;
+  pointer-events: none;
+  z-index: 2;
+}
+.card:hover::before {
+  transform: translateX(350%) skewX(-25deg);
+}
+.card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at var(--mx,50%) var(--my,50%), rgba(255,110,180,.09) 0%, transparent 65%);
+  pointer-events: none;
+}
+.c-corner{position:absolute;width:13px;height:13px}
+.c-tl{top:5px;left:5px;border-top:2px solid var(--cyan);border-left:2px solid var(--cyan)}
+.c-br{bottom:5px;right:5px;border-bottom:2px solid var(--pink);border-right:2px solid var(--pink)}
+.c-head{display:flex;align-items:center;gap:11px;margin-bottom:8px}
+.c-ico{font-size:1.9em;line-height:1;filter:drop-shadow(0 0 6px currentColor)}
+.c-name{font-family:'Orbitron',sans-serif;font-size:.88em;font-weight:700;letter-spacing:1px}
+.c-url{font-size:.66em;color:var(--dim);word-break:break-all;margin-top:2px}
+.c-desc{font-size:.78em;color:var(--text);margin-top:5px;line-height:1.5;opacity:.85}
+.c-tag{display:inline-block;font-size:.63em;padding:2px 9px;border-radius:10px;border:1px solid;margin-top:8px;letter-spacing:.5px}
+@keyframes emptySlideUp {
+  0% { opacity: 0; transform: translateY(20px) scale(0.95); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+.empty{grid-column:1/-1;text-align:center;padding:60px;color:var(--dim);animation:emptySlideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) both}
+.star{position:fixed;pointer-events:none;z-index:1;animation:twinkle 2.5s infinite}
+@keyframes twinkle{0%,100%{opacity:.2;transform:scale(.7)}50%{opacity:1;transform:scale(1.3)}}
+#loli{position:fixed;bottom:18px;left:18px;font-size:1.8em;z-index:5;cursor:pointer;filter:drop-shadow(0 0 10px var(--pink));animation:bob 3s ease-in-out infinite;user-select:none;transition:transform .2s}
+#loli:hover{transform:scale(1.3) rotate(-10deg)!important}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+footer{text-align:center;padding:30px 10px 20px;color:var(--dim);font-size:.72em}
+.cur::after{content:'█';animation:bl 1s infinite;color:var(--green)}
+@keyframes bl{0%,50%{opacity:1}51%,100%{opacity:0}}
+::-webkit-scrollbar{width:5px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--pink);border-radius:3px}
+::selection{background:rgba(255,110,180,.3);color:#fff}
+/* Touch & Mobile Optimizations */
+.card:active {
+  transform: scale(0.98);
+  border-color: var(--pink);
+}
+@media (hover: hover) and (pointer: fine) {
+  .card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 35px rgba(255,110,180,.15), var(--g-pink);
+  }
+  .card:hover::before {
+    transform: scaleX(1);
+  }
+}
+
+@media (max-width: 680px) {
+  .wrap {
+    padding: 12px 12px calc(55px + env(safe-area-inset-bottom, 20px));
+  }
+  .hdr {
+    padding: 22px 8px 10px;
+  }
+  .ava {
+    width: 80px;
+    height: 80px;
+  }
+  .site-title {
+    font-size: clamp(1.4em, 6.5vw, 2em);
+    letter-spacing: 2px;
+  }
+  .subtitle {
+    font-size: 0.72em;
+    letter-spacing: 1.5px;
+    margin-top: 4px;
+  }
+  .t-sep {
+    font-size: 0.65em;
+    gap: 8px;
+    margin: 8px auto;
+  }
+  .statusbar {
+    gap: 12px;
+    font-size: 0.68em;
+    margin: 6px 0 14px;
+  }
+  .srch-wrap {
+    max-width: 100%;
+    margin-bottom: 14px;
+  }
+  .srch {
+    font-size: 16px; /* Prevents iOS Safari auto-zoom on focus */
+    min-height: 44px;
+    padding: 10px 14px 10px 42px;
+  }
+  .srch-ico {
+    left: 15px;
+    font-size: 1.05em;
+  }
+
+  /* Horizontal Touch Ribbon for Categories */
+  .cats {
+    display: flex;
+    justify-content: flex-start;
+    gap: 8px;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    -webkit-overflow-scrolling: touch;
+    padding: 4px 4px 12px;
+    margin-bottom: 14px;
+    scrollbar-width: none;
+  }
+  .cats::-webkit-scrollbar {
+    display: none;
+  }
+  .cat-btn {
+    flex-shrink: 0;
+    padding: 8px 16px;
+    font-size: 0.82em;
+    min-height: 40px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Control Deck */
+  .control-deck {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 10px 12px;
+    gap: 10px;
+  }
+  .control-readout {
+    justify-content: space-between;
+    width: 100%;
+    font-size: 0.72em;
+  }
+  .control-actions {
+    display: flex;
+    gap: 8px;
+    width: 100%;
+  }
+  .cmd {
+    flex: 1;
+    min-height: 40px;
+    font-size: 0.82em;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+  }
+  .cmd:active {
+    transform: scale(0.96);
+  }
+
+  /* Grid & Cards */
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    padding: 0;
+  }
+  .card {
+    padding: 14px 16px;
+    border-radius: 8px;
+  }
+  .c-name {
+    font-size: 0.9em;
+  }
+  .c-url {
+    font-size: 0.68em;
+  }
+  .c-desc {
+    font-size: 0.76em;
+  }
+  .c-ico {
+    font-size: 1.7em;
+  }
+}
+
+/* Safe Area Inset for Floating Elements */
+#loli {
+  bottom: max(16px, env(safe-area-inset-bottom, 16px)) !important;
+  left: max(16px, env(safe-area-inset-left, 16px)) !important;
+  -webkit-tap-highlight-color: transparent;
+}
+.f-admin {
+  bottom: max(10px, env(safe-area-inset-bottom, 10px)) !important;
+  right: max(14px, env(safe-area-inset-right, 14px)) !important;
+  padding: 6px 12px;
+  background: rgba(7, 7, 18, 0.6);
+  border-radius: 12px;
+  backdrop-filter: blur(6px);
+  -webkit-tap-highlight-color: transparent;
+}
+/* Admin入口 */
+.f-admin{position:fixed;bottom:10px;right:14px;font-size:.68em;color:rgba(255,110,180,.18);cursor:pointer;z-index:10;transition:color .3s;user-select:none;text-decoration:none}
+.f-admin:hover{color:rgba(255,110,180,.9);text-shadow:var(--g-pink)}
+
+/* Toast Notification Slide-in */
+#notif {
+  position: fixed;
+  top: max(18px, env(safe-area-inset-top, 18px));
+  right: max(18px, env(safe-area-inset-right, 18px));
+  background: var(--bg2);
+  border: 1px solid var(--green);
+  color: var(--green);
+  padding: 10px 22px;
+  border-radius: 8px;
+  font-size: .82em;
+  z-index: 99999;
+  box-shadow: var(--g-green);
+  transform: translateY(-50px) scale(0.92);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform .35s cubic-bezier(.175,.885,.32,1.275), opacity .25s ease;
+}
+#notif.show {
+  transform: translateY(0) scale(1);
+  opacity: 1;
+  pointer-events: auto;
+}
+@media (max-width: 600px) {
+  #notif {
+    left: 16px;
+    right: 16px;
+    text-align: center;
+  }
+}
+
+
+.skip-link{position:fixed;top:-40px;left:0;width:100%;padding:8px;text-align:center;background:var(--pink);color:#fff;font-family:'Share Tech Mono',monospace;font-size:.85em;z-index:99999;transition:top .3s}
+.skip-link:focus{top:0;outline:none}
+</style>
+<script>
+/**
+ * LoliNet Core v2.1
+ * 共享核心模块：数据持久化、事件总线、插件系统接口
+ */
+(function (global) {
+  'use strict';
+
+  const DEF_SET = {
+    title: 'LoliNet',
+    sub: '// 歡迎來到我的小窩 ✧ WELCOME TO MY SPACE //',
+    ava: 'https://api.dicebear.com/7.x/pixel-art/svg?seed=kawaii&backgroundColor=b6e3f4,d1d4f9,ffd5dc',
+    author: 'LOLI_NET'
+  };
+
+  const DEF_LINKS = [
+    { id: 'd1', name: 'GitHub', ico: '🐙', url: 'https://github.com', desc: '全球最大代碼托管平台', cat: '開發', clr: '#00ff88' },
+    { id: 'd2', name: '我的博客', ico: '📝', url: 'https://example.com/blog', desc: '技術筆記與日常記錄', cat: '博客', clr: '#ff6eb4' },
+    { id: 'd3', name: '圖片站', ico: '🌸', url: 'https://example.com/gallery', desc: '二次元圖片收藏館', cat: '媒體', clr: '#b44fff' },
+    { id: 'd4', name: 'Bilibili', ico: '📺', url: 'https://bilibili.com', desc: '二次元視頻平台', cat: '媒體', clr: '#00d4ff' },
+    { id: 'd5', name: '工具箱', ico: '🔧', url: 'https://example.com/tools', desc: '常用在線工具集合', cat: '工具', clr: '#ffcc00' },
+    { id: 'd6', name: '音樂站', ico: '🎵', url: 'https://example.com/music', desc: '我的音樂收藏空間', cat: '媒體', clr: '#ff6633' }
+  ];
+
+  const STORAGE_KEY_SET = 'lnset';
+  const STORAGE_KEY_LINKS = 'lnlinks';
+  const STORAGE_KEY_PLUGINS = 'lnplugins';
+
+  // ── 事件总线 ──
+  const events = {};
+  function on(evt, cb) {
+    if (!events[evt]) events[evt] = [];
+    events[evt].push(cb);
+  }
+  function off(evt, cb) {
+    if (!events[evt]) return;
+    events[evt] = events[evt].filter(fn => fn !== cb);
+  }
+  function emit(evt, data) {
+    if (!events[evt]) return;
+    events[evt].forEach(cb => { try { cb(data); } catch (e) { console.error(e); } });
+  }
+
+  // ── 数据层 ──
+  function getSettings() {
+    try {
+      const s = localStorage.getItem(STORAGE_KEY_SET);
+      return s ? { ...DEF_SET, ...JSON.parse(s) } : { ...DEF_SET };
+    } catch { return { ...DEF_SET }; }
+  }
+  function saveSettings(d) {
+    localStorage.setItem(STORAGE_KEY_SET, JSON.stringify(d));
+    emit('settingsChanged', d);
+  }
+  function getLinks() {
+    try {
+      const l = localStorage.getItem(STORAGE_KEY_LINKS);
+      if (!l) { saveLinks([...DEF_LINKS]); return [...DEF_LINKS]; }
+      return JSON.parse(l);
+    } catch { return [...DEF_LINKS]; }
+  }
+  function saveLinks(a) {
+    localStorage.setItem(STORAGE_KEY_LINKS, JSON.stringify(a));
+    emit('linksChanged', a);
+  }
+  function getPluginState() {
+    try {
+      const p = localStorage.getItem(STORAGE_KEY_PLUGINS);
+      return p ? JSON.parse(p) : {};
+    } catch { return {}; }
+  }
+  function savePluginState(obj) {
+    localStorage.setItem(STORAGE_KEY_PLUGINS, JSON.stringify(obj));
+  }
+
+  function updateSEOMeta(seo) {
+    if (!seo) return;
+    const setMeta = (sel, val, attr = 'content') => {
+      if (!val) return;
+      let el = document.querySelector(sel);
+      if (!el) {
+        el = document.createElement('meta');
+        const mName = sel.match(/name="([^"]+)"/);
+        const mProp = sel.match(/property="([^"]+)"/);
+        if (mName) el.setAttribute('name', mName[1]);
+        if (mProp) el.setAttribute('property', mProp[1]);
+        document.head.appendChild(el);
+      }
+      el.setAttribute(attr, val);
+    };
+    const setLink = (rel, href) => {
+      if (!href) return;
+      let el = document.querySelector(`link[rel="${rel}"]`);
+      if (!el) {
+        el = document.createElement('link');
+        el.setAttribute('rel', rel);
+        document.head.appendChild(el);
+      }
+      el.setAttribute('href', href);
+    };
+
+    if (seo.title) document.title = seo.title;
+    setMeta('meta[name="description"]', seo.description);
+    setMeta('meta[name="keywords"]', seo.keywords);
+    setMeta('meta[name="robots"]', seo.robots);
+    setMeta('meta[name="theme-color"]', seo.themeColor);
+    setMeta('meta[property="og:title"]', seo.title);
+    setMeta('meta[property="og:description"]', seo.description);
+    setMeta('meta[property="og:url"]', seo.siteUrl);
+    setMeta('meta[property="og:image"]', seo.ogImage);
+    setMeta('meta[property="og:image:alt"]', seo.ogImageAlt);
+    setMeta('meta[name="twitter:card"]', seo.twitterCard);
+    setMeta('meta[name="twitter:title"]', seo.title);
+    setMeta('meta[name="twitter:description"]', seo.description);
+    setMeta('meta[name="twitter:image"]', seo.ogImage);
+    setLink('canonical', seo.canonical || seo.siteUrl);
+    setLink('icon', seo.favicon);
+    setLink('apple-touch-icon', seo.favicon);
+  }
+
+  async function hydrateFromApi() {
+    try {
+      const r = await fetch('/api/public/state');
+      if (!r.ok) return;
+      const data = await r.json();
+      if (data?.settings) {
+        localStorage.setItem(STORAGE_KEY_SET, JSON.stringify(data.settings));
+        emit('settingsChanged', data.settings);
+      }
+      if (Array.isArray(data?.links)) {
+        localStorage.setItem(STORAGE_KEY_LINKS, JSON.stringify(data.links));
+        emit('linksChanged', data.links);
+      }
+    } catch {}
+  }
+
+  // ── 插件系统 ──
+  const plugins = {}; // id -> { meta, instance }
+  const pluginHooks = {
+    tabs: [],      // { id, label, renderFn }
+    actions: [],   // { id, html, onMount }
+    widgets: [],  // { id, html, position, onMount }
+    settings: []   // { id, title, renderFn }
+  };
+
+  function registerPlugin(meta, instance) {
+    if (!meta || !meta.id) throw new Error('Plugin must have an id');
+    if (plugins[meta.id]) unregisterPlugin(meta.id);
+
+    plugins[meta.id] = { meta, instance };
+
+    // 提供 admin API 给插件
+    const adminAPI = {
+      addTab: (label, renderFn) => {
+        const tid = 'plugin-' + meta.id + '-' + Date.now();
+        pluginHooks.tabs.push({ id: tid, label, renderFn, pluginId: meta.id });
+        emit('adminTabAdded', { id: tid, label, pluginId: meta.id });
+        return tid;
+      },
+      removeTab: (tid) => {
+        pluginHooks.tabs = pluginHooks.tabs.filter(t => t.id !== tid);
+        emit('adminTabRemoved', { id: tid });
+      },
+      addActionButton: (config) => {
+        const aid = 'plugin-act-' + meta.id + '-' + Date.now();
+        pluginHooks.actions.push({ id: aid, ...config, pluginId: meta.id });
+        emit('adminActionAdded', { id: aid, pluginId: meta.id });
+        return aid;
+      },
+      removeActionButton: (aid) => {
+        pluginHooks.actions = pluginHooks.actions.filter(a => a.id !== aid);
+        emit('adminActionRemoved', { id: aid });
+      },
+      addWidget: (html, position = 'dashboard', onMount) => {
+        const wid = 'plugin-widget-' + meta.id + '-' + Date.now();
+        pluginHooks.widgets.push({ id: wid, html, position, onMount, pluginId: meta.id });
+        emit('adminWidgetAdded', { id: wid, position, pluginId: meta.id });
+        return wid;
+      },
+      removeWidget: (wid) => {
+        pluginHooks.widgets = pluginHooks.widgets.filter(w => w.id !== wid);
+        emit('adminWidgetRemoved', { id: wid });
+      },
+      registerSettingPanel: (title, renderFn) => {
+        const sid = 'plugin-set-' + meta.id + '-' + Date.now();
+        pluginHooks.settings.push({ id: sid, title, renderFn, pluginId: meta.id });
+        emit('adminSettingPanelAdded', { id: sid, title, pluginId: meta.id });
+        return sid;
+      },
+      removeSettingPanel: (sid) => {
+        pluginHooks.settings = pluginHooks.settings.filter(s => s.id !== sid);
+        emit('adminSettingPanelRemoved', { id: sid });
+      },
+      notify: (msg, type) => emit('notify', { msg, type })
+    };
+
+    const coreAPI = {
+      getSettings, saveSettings,
+      getLinks, saveLinks,
+      getPluginState, savePluginState,
+      on, off, emit,
+      version: '2.1.0'
+    };
+
+    if (typeof instance.init === 'function') {
+      try { instance.init(coreAPI, adminAPI); } catch (e) { console.error('Plugin init error:', e); }
+    }
+
+    // 记录启用状态
+    const ps = getPluginState();
+    ps[meta.id] = { enabled: true, loadedAt: Date.now() };
+    savePluginState(ps);
+
+    emit('pluginLoaded', { id: meta.id, meta });
+    console.log(`[LoliNet] Plugin loaded: ${meta.name} v${meta.version}`);
+    return true;
+  }
+
+  function unregisterPlugin(id) {
+    const p = plugins[id];
+    if (!p) return false;
+    if (typeof p.instance.destroy === 'function') {
+      try { p.instance.destroy(); } catch (e) { console.error(e); }
+    }
+    // 清理 hooks
+    pluginHooks.tabs = pluginHooks.tabs.filter(t => t.pluginId !== id);
+    pluginHooks.actions = pluginHooks.actions.filter(a => a.pluginId !== id);
+    pluginHooks.widgets = pluginHooks.widgets.filter(w => w.pluginId !== id);
+    pluginHooks.settings = pluginHooks.settings.filter(s => s.pluginId !== id);
+    delete plugins[id];
+
+    const ps = getPluginState();
+    if (ps[id]) { ps[id].enabled = false; savePluginState(ps); }
+
+    emit('pluginUnloaded', { id });
+    console.log(`[LoliNet] Plugin unloaded: ${id}`);
+    return true;
+  }
+
+  function getPlugin(id) { return plugins[id] || null; }
+  function listPlugins() { return Object.values(plugins).map(p => ({ ...p.meta })); }
+  function getHooks() { return JSON.parse(JSON.stringify(pluginHooks)); }
+
+  // ── 导出 ──
+  global.LoliNet = global.LoliNet || {};
+  global.LoliNet.Core = {
+    DEF_SET, DEF_LINKS,
+    getSettings, saveSettings,
+    getLinks, saveLinks,
+    getPluginState, savePluginState,
+    updateSEOMeta,
+    hydrateFromApi,
+    on, off, emit,
+    registerPlugin, unregisterPlugin, getPlugin, listPlugins,
+    getHooks
+  };
+
+  console.log('%c LoliNet Core v2.1 ✧ 已就緒', 'color:#ff6eb4;font-size:14px;font-weight:bold');
+})(window);
+
+</script>
+<link rel="sitemap" type="application/xml" title="Sitemap" href="./sitemap.xml">
+</head>
+<body>
+<a href="#main-content" class="skip-link">跳至主要內容</a>
+
+<canvas id="mc" aria-hidden="true"></canvas>
+<div class="scanlines" aria-hidden="true"></div>
+<div id="particles" aria-hidden="true"></div>
+
+<div class="star" style="top:8%;left:4%;animation-delay:.0s;color:var(--pink)" aria-hidden="true">✦</div>
+<div class="star" style="top:20%;right:5%;animation-delay:.6s;color:var(--cyan)" aria-hidden="true">✧</div>
+<div class="star" style="top:45%;left:2%;animation-delay:1.1s;color:var(--pink)" aria-hidden="true">♡</div>
+<div class="star" style="top:65%;right:3%;animation-delay:.4s;color:var(--green)" aria-hidden="true">✦</div>
+<div class="star" style="top:80%;left:6%;animation-delay:1.8s;color:var(--cyan)" aria-hidden="true">✧</div>
+<div class="star" style="top:30%;right:8%;animation-delay:1.3s;color:var(--pink)" aria-hidden="true">★</div>
+<div class="star" style="top:55%;left:9%;animation-delay:.9s;color:var(--purple)" aria-hidden="true">♡</div>
+<div class="star" style="top:12%;left:18%;animation-delay:2.1s;color:var(--green)" aria-hidden="true">✦</div>
+
+<div id="loli" title="點我！" role="button" tabindex="0" aria-label="切換表情符號">ฅ^•ﻌ•^ฅ</div>
+<div id="notif" role="status" aria-live="polite" aria-atomic="true"></div>
+
+<main class="wrap" id="main-content">
+  <header class="hdr">
+    <div class="avatar-wrap">
+      <div class="ring2" aria-hidden="true"></div>
+      <div class="ring1" aria-hidden="true"></div>
+      <img id="ava-img" class="ava"
+           src="https://api.dicebear.com/7.x/pixel-art/svg?seed=kawaii&backgroundColor=b6e3f4,d1d4f9,ffd5dc"
+           alt="LoliNet 像素風格頭像"
+           width="96" height="96"
+           loading="eager">
+    </div>
+    <h1 class="site-title" id="stitle" data-t="LoliNet">LoliNet</h1>
+    <div class="subtitle" id="ssub">// 歡迎來到我的小窩 ✧ WELCOME TO MY SPACE //</div>
+    <div class="t-sep" aria-hidden="true">[ SYSTEM ONLINE ]</div>
+    <div class="statusbar" role="status" aria-label="系統狀態">
+      <div class="s-item"><div class="dot" aria-hidden="true"></div><span style="color:var(--green)">ONLINE</span></div>
+      <div class="s-item"><time id="clock" datetime="--:--:--">──:──:──</time></div>
+      <div class="s-item"><span id="nodecnt" style="color:var(--cyan)">0 NODES</span></div>
+      <div class="s-item"><span style="color:var(--purple)">VER 2.1</span></div>
+    </div>
+  </header>
+
+  <nav aria-label="站點搜尋與篩選">
+    <div class="srch-wrap">
+      <span class="srch-ico" aria-hidden="true">⌕</span>
+      <input class="srch" id="srch" type="search"
+             placeholder="搜尋站點節點... Search nodes..."
+             aria-label="搜尋站點節點"
+             autocomplete="off"
+             enterkeyhint="search">
+    </div>
+    <div class="cats" id="cats" role="tablist" aria-label="分類篩選"></div>
+  </nav>
+
+  <div class="control-deck" aria-label="站點控制台">
+    <div class="control-readout"><span class="pulse-bar" aria-hidden="true"></span><span id="result-count">0 / 0 SIGNALS</span><b id="active-filter">ALL CHANNELS</b></div>
+    <div class="control-actions">
+      <button class="cmd" id="random-link" type="button" title="隨機開啟一個站點" aria-label="隨機開啟一個站點">RND</button>
+      <button class="cmd" id="share-view" type="button" title="複製目前篩選的分享連結" aria-label="複製目前篩選的分享連結">COPY</button>
+      <button class="cmd" id="focus-view" type="button" title="切換專注瀏覽模式" aria-label="切換專注瀏覽模式" aria-pressed="false">FOCUS</button>
+    </div>
+  </div>
+
+  <section aria-label="站點連結列表">
+    <div class="grid" id="grid" role="list"></div>
+  </section>
+
+  <footer>
+    <div>// MADE WITH ♡ BY <span id="fauthor" style="color:var(--pink)">LOLI_NET</span> //</div>
+    <div style="margin-top:6px">
+      <span style="color:var(--green)">root@lolinet</span>:<span style="color:var(--cyan)">~</span>$
+      <span class="cur" aria-hidden="true"></span>
+    </div>
+  </footer>
+</main>
+
+<a href="./admin/" class="f-admin" title="前往後台" rel="nofollow">⚙ ADMIN</a>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "首頁",
+      "item": "https://m24vc.com/"
+    }
+  ]
+}
+</script>
+
+<script>
+const skipLink = document.querySelector('.skip-link');
+if(skipLink){
+  skipLink.addEventListener('click', e => {
+    e.preventDefault();
+    const target = document.getElementById('main-content');
+    target.setAttribute('tabindex', '-1');
+    target.focus();
+  });
+}
+
+let curCat='all',curQ='';
+const queryState=new URLSearchParams(location.search);
+curCat=queryState.get('cat')||'all';
+curQ=queryState.get('q')||'';
+document.getElementById('srch').value=curQ;
+function safeColor(value){return /^#[0-9a-fA-F]{6}$/.test(value||'')?value:'#ff6eb4'}
+function toSafeUrl(value){try{if(!value)return null;let c=String(value).trim();if(!/^https?:\/\//i.test(c))c='https://'+c;const url=new URL(c);return ['http:','https:'].includes(url.protocol)?url.href:null}catch{return null}}
+function syncViewState(){
+  const params=new URLSearchParams();
+  if(curCat!=='all')params.set('cat',curCat);
+  if(curQ)params.set('q',curQ);
+  history.replaceState(null,'',params.size?`?${params}`:location.pathname);
+}
+function render(){
+  const S=LoliNet.Core.getSettings(),L=LoliNet.Core.getLinks();
+  const te=document.getElementById('stitle');
+  te.textContent=S.title;te.dataset.t=S.title;
+  document.getElementById('ssub').textContent=S.sub;
+  document.getElementById('ava-img').src=S.ava;
+  document.getElementById('ava-img').alt=S.title + ' 像素風格頭像';
+  document.getElementById('fauthor').textContent=S.author;
+  const catTitle = (curCat && curCat !== 'all') ? (curCat + ' 精選站點導覽 - ') : '';
+  document.title = catTitle + S.title + ' // 個人導覽站';
+  document.getElementById('nodecnt').textContent=L.length+' NODES';
+  const cats=[...new Set(L.map(l=>l.cat).filter(Boolean))];
+  renderCats(cats);renderGrid(L);
+}
+function renderCats(cats){
+  const c=document.getElementById('cats');c.innerHTML='';
+  const mk=(lbl,cat,idx)=>{
+    const b=document.createElement('button');
+    b.className='cat-btn'+(curCat===cat?' on':'');
+    b.textContent=lbl;
+    b.setAttribute('role','tab');
+    b.setAttribute('aria-selected',curCat===cat?'true':'false');
+    b.setAttribute('aria-controls','grid');
+    b.setAttribute('tabindex',curCat===cat?'0':'-1');
+    b.id='tab-'+cat;
+    b.onclick=()=>filter(cat);
+    return b;
+  };
+  c.appendChild(mk('ALL ✦','all',0));
+  cats.forEach((ct,i)=>c.appendChild(mk(ct.toUpperCase(),ct,i+1)));
+}
+function renderGrid(all){
+  const g=document.getElementById('grid');g.innerHTML='';
+  let list=all.filter(l=>toSafeUrl(l.url));
+  if(curCat!=='all')list=list.filter(l=>l.cat===curCat);
+  if(curQ){const q=curQ.toLowerCase();list=list.filter(l=>
+    String(l.name||'').toLowerCase().includes(q)||String(l.desc||'').toLowerCase().includes(q)||String(l.cat||'').toLowerCase().includes(q))}
+  document.getElementById('result-count').textContent=`${list.length} / ${all.length} SIGNALS`;
+  document.getElementById('active-filter').textContent=curCat==='all'?'ALL CHANNELS':curCat.toUpperCase();
+  if(!list.length){
+    const empty=document.createElement('div');empty.className='empty';empty.setAttribute('role','listitem');
+    const mark=document.createElement('div');mark.style.cssText='font-size:2em;margin-bottom:8px';mark.textContent='✧';
+    const text=document.createElement('div');text.style.color='var(--pink)';text.textContent='沒有找到站點節點';
+    empty.append(mark,text);g.appendChild(empty);return
+  }
+  list.forEach((lk,i)=>{
+    const href=toSafeUrl(lk.url);if(!href)return;
+    const a=document.createElement('a');
+    const color=safeColor(lk.clr);
+    a.href=href;a.target='_blank';a.rel='noopener noreferrer';
+    a.className='card';a.style.animationDelay=i*.04+'s';
+    a.setAttribute('role','listitem');
+    a.setAttribute('aria-label',lk.name + (lk.desc?' - '+lk.desc:''));
+    const cornerTop=document.createElement('div');cornerTop.className='c-corner c-tl';cornerTop.setAttribute('aria-hidden','true');
+    const cornerBottom=document.createElement('div');cornerBottom.className='c-corner c-br';cornerBottom.setAttribute('aria-hidden','true');
+    const head=document.createElement('div');head.className='c-head';
+    const icon=document.createElement('span');icon.className='c-ico';icon.style.color=color;icon.setAttribute('aria-hidden','true');icon.textContent=lk.ico||'✦';
+    const info=document.createElement('div');const name=document.createElement('div');name.className='c-name';name.style.color=color;name.textContent=lk.name||'未命名節點';
+    const url=document.createElement('div');url.className='c-url';url.textContent=href;info.append(name,url);head.append(icon,info);a.append(cornerTop,cornerBottom,head);
+    if(lk.desc){const desc=document.createElement('div');desc.className='c-desc';desc.textContent=lk.desc;a.appendChild(desc)}
+    if(lk.cat){const tag=document.createElement('span');tag.className='c-tag';tag.style.color=color;tag.style.borderColor=`${color}55`;tag.textContent=lk.cat;a.appendChild(tag)}
+    if (window.matchMedia && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+      a.addEventListener('mouseenter',()=>{a.style.borderColor=color;
+        a.style.boxShadow=`0 0 14px ${color}88,0 10px 30px rgba(0,0,0,.4)`});
+      a.addEventListener('mouseleave',()=>{a.style.borderColor='';a.style.boxShadow='';a.style.transform=''});
+      a.addEventListener('mousemove',e=>{
+        const r=a.getBoundingClientRect();
+        a.style.setProperty('--mx',((e.clientX-r.left)/r.width*100)+'%');
+        a.style.setProperty('--my',((e.clientY-r.top)/r.height*100)+'%');
+        const rx=((e.clientY-r.top)/r.height-.5)*7;
+        const ry=((e.clientX-r.left)/r.width-.5)*-7;
+        a.style.transform=`translateY(-4px) rotateX(${rx}deg) rotateY(${ry}deg)`;
+      });
+    }
+    g.appendChild(a);
+  });
+}
+function filter(cat){
+  curCat=cat;
+  document.querySelectorAll('.cat-btn').forEach(b=>{
+    const isOn=(cat==='all'&&b.textContent.includes('ALL'))||(b.textContent===cat.toUpperCase());
+    b.classList.toggle('on',isOn);
+    b.setAttribute('aria-selected',isOn?'true':'false');
+    b.setAttribute('tabindex',isOn?'0':'-1');
+  });
+  renderGrid(LoliNet.Core.getLinks());
+  syncViewState();
+}
+document.getElementById('srch').oninput=e=>{curQ=e.target.value;renderGrid(LoliNet.Core.getLinks());syncViewState()};
+document.getElementById('random-link').onclick=()=>{
+  const pool=LoliNet.Core.getLinks().filter(l=>toSafeUrl(l.url));
+  if(!pool.length){notify('沒有可開啟的站點','err');return}
+  const pick=pool[Math.floor(Math.random()*pool.length)];
+  notify(`正在開啟: ${pick.name||'未命名節點'}`);
+  window.open(toSafeUrl(pick.url),'_blank','noopener');
+};
+document.getElementById('share-view').onclick=async()=>{
+  const url=location.href;
+  try{await navigator.clipboard.writeText(url);notify('目前視圖連結已複製')}catch{notify('無法存取剪貼簿，請直接複製網址','err')}
+};
+document.getElementById('focus-view').onclick=e=>{
+  const active=document.body.classList.toggle('focus-mode');e.currentTarget.setAttribute('aria-pressed',String(active));notify(active?'已進入專注模式':'已離開專注模式');
+};
+
+(function(){
+  const cv=document.getElementById('mc'),ctx=cv.getContext('2d');
+  const ch='アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン0123456789♡✧★♠';
+  let dr=[];
+  function rs(){cv.width=innerWidth;cv.height=innerHeight;dr=new Array(Math.ceil(cv.width/14)).fill(1)}
+  rs();window.addEventListener('resize',rs);
+  setInterval(()=>{
+    ctx.fillStyle='rgba(7,7,18,.06)';ctx.fillRect(0,0,cv.width,cv.height);
+    dr.forEach((y,i)=>{
+      const c=ch[Math.random()*ch.length|0],rn=Math.random();
+      ctx.fillStyle=rn>.97?'#ff6eb4':rn>.94?'#00d4ff':'#00ff88';
+      ctx.font='13px monospace';ctx.fillText(c,i*14,y*14);
+      if(y*14>cv.height&&Math.random()>.975)dr[i]=0;
+      dr[i]++;
+    });
+  },45);
+})();
+
+(function(){
+  const cls=['#ff6eb4','#00ff88','#00d4ff','#b44fff','#ffcc00'];
+  function mk(){
+    const p=document.createElement('div');p.className='ptc';
+    const c=cls[Math.random()*cls.length|0],sz=(Math.random()*4+2)+'px';
+    Object.assign(p.style,{left:Math.random()*100+'vw',background:c,width:sz,height:sz,
+      boxShadow:`0 0 6px ${c}`,animationDuration:(Math.random()*15+12)+'s',
+      animationDelay:Math.random()*3+'s'});
+    document.getElementById('particles').appendChild(p);
+    setTimeout(()=>p.remove(),22000);
+  }
+  setInterval(mk,1200);
+})();
+
+setInterval(()=>{
+  const n=new Date();
+  const clock=document.getElementById('clock');
+  const t=[n.getHours(),n.getMinutes(),n.getSeconds()].map(x=>String(x).padStart(2,'0')).join(':');
+  clock.textContent=t;
+  clock.setAttribute('datetime',t);
+},1000);
+
+const lls=['ฅ^•ﻌ•^ฅ','(≧◡≦)','(◕‿◕)♡','٩(◕‿◕)۶','(≧∇≦)/','(｡♥‿♥｡)','(=^･ω･^=)','(ﾉ◕ヮ◕)ﾉ*:･ﾟ✧','OwO','UwU','(づ｡◕‿‿◕｡)づ'];
+let li=0;
+const loli=document.getElementById('loli');
+loli.onclick=()=>{li=(li+1)%lls.length;loli.textContent=lls[li];loli.setAttribute('aria-label','表情: '+lls[li])};
+loli.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();loli.click()}});
+
+let nt;
+function notify(msg,type='ok'){
+  const el=document.getElementById('notif');
+  if(!el) return;
+  const c=type==='err'?'#ff4444':'var(--green)';
+  el.textContent=msg;el.style.borderColor=c;el.style.color=c;
+  el.style.boxShadow=`0 0 16px ${type==='err'?'rgba(255,68,68,.7)':'rgba(0,255,136,.7)'}`;
+  el.classList.add('show');
+  clearTimeout(nt);nt=setTimeout(()=>el.classList.remove('show'),2600);
+}
+
+let eq='',ec='uwulolinet';
+document.addEventListener('keypress',e=>{
+  eq+=e.key.toLowerCase();if(eq.length>ec.length)eq=eq.slice(-ec.length);
+  if(eq===ec){notify('(◕‿◕)♡ 你發現了彩蛋！ ✧');loli.style.fontSize='4em'}
+});
+
+LoliNet.Core.on('settingsChanged', render);
+LoliNet.Core.on('linksChanged', render);
+
+(async function bootstrap(){
+  await LoliNet.Core.hydrateFromApi();
+  render();
+
+  const S = LoliNet.Core.getSettings();
+  const seo = S.seo || {};
+  seo.title = S.title;
+  seo.author = S.author;
+  requestAnimationFrame(() => {
+    if (typeof LoliNet.Core.updateSEOMeta === 'function') {
+      LoliNet.Core.updateSEOMeta(seo);
+      console.log('[SEO] Meta tags applied:', seo.title, seo.favicon);
+    }
+  });
+})();
+
+// 監聽設定變化，即時更新 SEO
+LoliNet.Core.on('settingsChanged', function(S) {
+  const seo = S.seo || {};
+  seo.title = S.title;
+  seo.author = S.author;
+  if (typeof LoliNet.Core.updateSEOMeta === 'function') {
+    LoliNet.Core.updateSEOMeta(seo);
+    console.log('[SEO] Meta tags updated from settings change');
+  }
+});
+console.log('%c LoliNet v2.1 ✧ 已就緒','color:#ff6eb4;font-size:16px;font-weight:bold');
+console.log('%c 後台入口: ./admin/  |  彩蛋: uwulolinet','color:#00d4ff');
+</script>
+</body>
+</html>
